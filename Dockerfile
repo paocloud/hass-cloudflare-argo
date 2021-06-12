@@ -24,7 +24,7 @@ RUN apk add --no-cache ca-certificates bind-tools libcap; \
 
 COPY --from=gobuild /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
 
-ADD data /etc/cloudflared/
+COPY data/argo.yml /etc/cloudflared/config.yml
 
 COPY run.sh /
 RUN chmod a+x /run.sh

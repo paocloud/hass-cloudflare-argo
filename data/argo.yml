@@ -1,6 +1,6 @@
-tunnel: '%%UUID%%'
+tunnel: %%UUID%%
 credentials-file: /config/cloudflare_argo/%%UUID%%.json
 ingress:
-  - hostname: '%%HOSTNAME%%'
+  - hostname: %%HOSTNAME%%
     service: http://homeassistant.local.hass.io:8123
   - service: http_status:404
