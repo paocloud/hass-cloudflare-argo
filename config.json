@@ -1,10 +1,10 @@
 {
   "name": "Cloudflare Argo Tunnel",
-  "version": "0.1",
+  "version": "0.2",
   "slug": "cloudflare-argo",
   "url": "https://hass.paocloud.tech/",
   "description": "Connect to Cloudflare Argo tunnel to Home Assistant instance.",
-  "arch": ["armv7", "amd64", "aarch64"],
+  "arch": ["armv7", "amd64", "aarch64", "armhf", "i386"],
   "startup": "application",
   "boot": "auto",
   "host_network": false,

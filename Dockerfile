@@ -1,29 +1,30 @@
-ARG GOLANG_VERSION=1.15
-ARG ALPINE_VERSION=3.13
-ARG BUILD_FROM=alpine:3.13
-
-FROM golang:${GOLANG_VERSION}-alpine${ALPINE_VERSION} as gobuild
-ARG GOLANG_VERSION
-ARG ALPINE_VERSION
-
-RUN apk add --no-cache git gcc build-base alpine-sdk; \
-  go get -v github.com/cloudflare/cloudflared/cmd/cloudflared
-
-WORKDIR /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared
-
-RUN go build ./
-
+ARG BUILD_FROM
 FROM $BUILD_FROM
 
-ARG GOLANG_VERSION
-ARG ALPINE_VERSION
+SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
-RUN apk add --no-cache ca-certificates bind-tools libcap; \
-  rm -rf /var/cache/apk/*; \
-  mkdir /etc/cloudflared;
-
-COPY --from=gobuild /go/src/github.com/cloudflare/cloudflared/cmd/cloudflared/cloudflared /usr/local/bin/cloudflared
-
+ARG BUILD_ARCH
+RUN \
+    set -x \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends dpkg wget \
+    && if [ "${BUILD_ARCH}" = "armhf" ]; \
+        then \
+            wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb; \
+	elif [ "${BUILD_ARCH}" = "armv7" ]; \
+	then \
+            wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb; \
+        elif [ "${BUILD_ARCH}" = "aarch64" ]; \
+        then \
+	    wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb; \
+        elif [ "${BUILD_ARCH}" = "amd64" ]; \
+        then \
+	    wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb; \
+	else \
+	    wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386.deb; \
+	fi \
+    && dpkg --force-all -i cloudflared-linux.deb
+	
 COPY data/argo.yml /etc/cloudflared/config.yml
 
 COPY run.sh /
