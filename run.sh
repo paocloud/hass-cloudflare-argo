@@ -10,6 +10,6 @@ sed -i "s#%%HOSTNAME%%#$HOSTNAME#g" /etc/cloudflared/config.yml
 sed -i "s#%%UUID%%#$UUID#g" /etc/cloudflared/config.yml
 
 
-bashio::log.info "Running cloudflare tunnel..."
+bashio::log.info "Running cloudflared tunnel."
 
-cloudflared tunnel run --force
+cloudflared tunnel --config /etc/cloudflared/config.yml run --force
