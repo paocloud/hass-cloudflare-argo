@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.3
+## 1.0
 
-- Change to use Binary on Cloudflare Package Repository
+- Change install to the Cloudflare Package Repository
 
 ## 0.2
 

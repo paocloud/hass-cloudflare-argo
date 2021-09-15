@@ -12,4 +12,4 @@ sed -i "s#%%UUID%%#$UUID#g" /etc/cloudflared/config.yml
 
 bashio::log.info "Running cloudflared tunnel."
 
-cloudflared tunnel --config /etc/cloudflared/config.yml run --force
+cloudflared tunnel run --force
