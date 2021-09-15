@@ -30,3 +30,5 @@ COPY data/argo.yml /etc/cloudflared/config.yml
 
 COPY run.sh /
 RUN chmod a+x /run.sh
+
+CMD [ "/run.sh" ]
