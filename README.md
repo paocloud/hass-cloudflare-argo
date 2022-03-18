@@ -13,7 +13,7 @@ PaOCLOUD CO., LTD.<br/>
 8 Moo 8 Bankhuan<br/>
 Langsuan Chumphon<br/>
 86110 TH<br/>
-Email : [hass@paocloud.co.th](mailto:hass@paocloud.co.th)<br/>
+Email : [hello@paocloud.co.th](mailto:hello@paocloud.co.th)<br/>
 Tel : [+66-77979386](tel:+66-77979386)<br/>
 FB : [Paocloud Co., Ltd.](https://fb.com/paocloudcoltd)<br/>
 
