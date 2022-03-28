@@ -1,0 +1,7 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Runs the Cloudflare daemon
+# ==============================================================================
+
+bashio::log.info "Starting cloudflare tunnel."
+exec cloudflared tunnel run --force
