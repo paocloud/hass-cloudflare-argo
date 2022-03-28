@@ -6,25 +6,29 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 ARG BUILD_ARCH
 RUN \
     set -x \
+    && apt-get update \
+    && apt-get install -y --no-install-recommends dpkg wget \
     && if [ "${BUILD_ARCH}" = "armhf" ]; \
         then \
-            wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm; \
+            wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb; \
 	elif [ "${BUILD_ARCH}" = "armv7" ]; \
 	then \
-            wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm; \
-    elif [ "${BUILD_ARCH}" = "aarch64" ]; \
-    then \
-	    wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64; \
-    elif [ "${BUILD_ARCH}" = "amd64" ]; \
-    then \
-	    wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64; \
-	elif [ "${BUILD_ARCH}" = "i386" ]; \
-    then \
-	    wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386; \
+            wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm.deb; \
+        elif [ "${BUILD_ARCH}" = "aarch64" ]; \
+        then \
+	    wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-arm64.deb; \
+        elif [ "${BUILD_ARCH}" = "amd64" ]; \
+        then \
+	    wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb; \
+	else \
+	    wget -O cloudflared-linux.deb https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386.deb; \
 	fi \
-    && mv cloudflared /usr/local/bin/cloudflared \
-    && chmod a+x /usr/local/bin/cloudflared
+    && dpkg --force-all -i cloudflared-linux.deb
 
 
-COPY rootfs /
-WORKDIR /
+COPY data/argo.yml /etc/cloudflared/config.yml
+
+COPY run.sh /
+RUN chmod a+x /run.sh
+
+CMD [ "/run.sh" ]
