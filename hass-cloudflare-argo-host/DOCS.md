@@ -8,16 +8,6 @@
 5. Upload file `config.yml` to `/config/cloudflare_argo/config.yml`.
 6. Start Addon.
 
-You must add this configuration into "main configuration" for see real-user IP.
-```
-homeassistant:
-  external_url: "https://{hostname}"
-http:
-  use_x_forwarded_for: true
-  trusted_proxies: 
-    - 127.0.0.1
-```
-
 Example config.yml
 ```
 tunnel: {UUID}
@@ -26,4 +16,14 @@ ingress:
   - hostname: {hostname}
     service: http://127.0.0.1:{hass_port}
   - service: http_status:404
+```
+
+You must add this configuration into "main configuration" for see real-user IP.
+```
+homeassistant:
+  external_url: "https://{hostname}"
+http:
+  use_x_forwarded_for: true
+  trusted_proxies: 
+    - 127.0.0.1
 ```
