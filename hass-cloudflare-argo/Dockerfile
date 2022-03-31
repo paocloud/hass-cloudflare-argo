@@ -21,6 +21,8 @@ RUN \
 	elif [ "${BUILD_ARCH}" = "i386" ]; \
     then \
 	    wget -O cloudflared https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-386; \
+    else \
+        echo 'NOT VALID BUILD'; exit 1; \
 	fi \
     && mv cloudflared /usr/local/bin/cloudflared \
     && chmod a+x /usr/local/bin/cloudflared
