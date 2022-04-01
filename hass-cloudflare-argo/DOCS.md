@@ -14,5 +14,5 @@ http:
   trusted_proxies: 
     - 172.30.33.0/24
 ```
-5. Config Addon `Hostname` with `{hostname}` and `uuid` with `{UUID}`.
+5. Config Addon `hostname` with `{hostname}` and `uuid` with `{UUID}`.
 6. Start Addon.
