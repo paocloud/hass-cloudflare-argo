@@ -2,7 +2,7 @@
 
 ## Configuration
 
-1. Setup Cloudflare Tunnel as indicated [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/#local-setup-cli-setup) in step 1-3.
+1. Setup Cloudflare Tunnel as indicated [here](https://developers.cloudflare.com/cloudflare-one/connections/connect-apps/install-and-setup/tunnel-guide/#local-setup-cli-setup) follow step 1-3.
 2. Add Cloudflare DNS CNAME record pointing `{hostname}` to `{UUID}.cfargotunnel.com`.
 3. Upload file in `~/.cloudflared/{UUID}.json` to `/config/cloudflare_argo/{UUID}.json`.
 4. Upload file `config.yml` to `/config/cloudflare_argo/config.yml`.
@@ -15,7 +15,7 @@ http:
   trusted_proxies: 
      - 127.0.0.1
 ```
-6. Start Addon.
+6. Restart home assistant And Start Addon.
 
 Example config.yml
 ```
