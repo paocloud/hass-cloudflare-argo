@@ -2,7 +2,7 @@
 
 ## 2.1
 - add apparmor.txt
-- change to user http2 protocol fix quic receive buffer size
+- change to use http2 protocol fix quic receive buffer size
 
 ## 2.0
 - Change to run as service
