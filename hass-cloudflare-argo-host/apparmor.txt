@@ -20,7 +20,7 @@ profile pcloudflareargo flags=(attach_disconnected,mediate_deleted) {
   /data/** rw,
   /config/cloudflare_argo/** r,
 
-  # Start new profile for service
-  /usr/local/bin/cloudflared ux,
+  # Service
+  /usr/local/bin/cloudflared rwix,
 
 }
