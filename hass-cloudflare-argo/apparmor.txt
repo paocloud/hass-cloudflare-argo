@@ -1,0 +1,26 @@
+#include <tunables/global>
+
+profile pcloudflareargo flags=(attach_disconnected,mediate_deleted) {
+  #include <abstractions/base>
+  
+  # Capabilities
+  file,
+  signal,
+
+  # S6-Overlay
+  /etc/services.d/** rwix,
+  /etc/cont-init.d/** rwix,
+  /etc/cont-finish.d/** rwix,
+
+  # Bashio
+  /usr/lib/bashio/** ix,
+  /tmp/** rw,
+
+  # Data access
+  /data/** rw,
+  /config/** r,
+
+  # Start new profile for service
+  /usr/local/bin/cloudflared ux,
+
+}

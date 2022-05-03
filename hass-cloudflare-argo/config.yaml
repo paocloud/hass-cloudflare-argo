@@ -4,6 +4,7 @@ version: 2.0
 slug: cloudflare-argo
 url: https://github.com/paocloud/hass-cloudflare-argo
 description: Connect to Cloudflare Argo tunnel to Home Assistant instance.
+codenotary: hello@paocloud.co.th
 arch: 
   - armv7
   - amd64
