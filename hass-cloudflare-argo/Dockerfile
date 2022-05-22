@@ -27,6 +27,8 @@ RUN \
     && mv cloudflared /usr/local/bin/cloudflared \
     && chmod a+x /usr/local/bin/cloudflared
 
-
 COPY rootfs /
+RUN chmod +x -R /etc/services.d
+RUN chmod +x -R /etc/cont-init.d
+RUN chmod +x -R /etc/cont-finish.d
 WORKDIR /
