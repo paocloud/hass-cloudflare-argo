@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.1.5
+- fix "s6-overlay-suexec: fatal: can only run as pid 1" error.
+
 ## 2.1
 - add apparmor.txt
 - change to use http2 protocol fix quic receive buffer size
