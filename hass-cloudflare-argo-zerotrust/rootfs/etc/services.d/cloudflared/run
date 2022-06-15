@@ -1,0 +1,9 @@
+#!/usr/bin/with-contenv bashio
+# ==============================================================================
+# Runs the Cloudflare daemon
+# ==============================================================================
+
+TOKEN=$(bashio::config 'token')
+
+bashio::log.info "Starting cloudflare tunnel."
+exec cloudflared tunnel --protocol http2 run --force --token $TOKEN
