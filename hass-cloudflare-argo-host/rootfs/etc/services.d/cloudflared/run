@@ -4,4 +4,4 @@
 # ==============================================================================
 
 bashio::log.info "Starting cloudflare tunnel."
-exec cloudflared tunnel --protocol http2 run --force
+exec cloudflared tunnel run --force
