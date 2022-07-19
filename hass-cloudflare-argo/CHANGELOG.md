@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3
+- update finish scripts for s6 v3
+
 ## 2.2
 - change back to quic protocol (home assistant OS Increased maximum receive and send buffer size)
 

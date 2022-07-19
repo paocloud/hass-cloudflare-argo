@@ -1,6 +1,6 @@
 ---
 name: Cloudflare Argo Tunnel - Host
-version: 2.2
+version: 2.3
 slug: cloudflare-argo-host
 url: https://github.com/paocloud/hass-cloudflare-argo
 description: Connect to Cloudflare Argo tunnel to Home Assistant instance.
@@ -11,7 +11,7 @@ arch:
   - aarch64
   - armhf
   - i386
-startup: application
+startup: system
 hassio_api: true
 boot: auto
 host_network: true
