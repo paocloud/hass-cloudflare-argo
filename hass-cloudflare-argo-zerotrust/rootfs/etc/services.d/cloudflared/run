@@ -6,4 +6,4 @@
 TOKEN=$(bashio::config 'token')
 
 bashio::log.info "Starting cloudflare tunnel."
-exec cloudflared tunnel run --force --token $TOKEN
+exec cloudflared tunnel run --token $TOKEN

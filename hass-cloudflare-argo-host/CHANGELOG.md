@@ -1,5 +1,8 @@
 # Changelog
 
+## 2.3.1
+- remove "force" flag
+
 ## 2.3
 - update finish scripts for s6 v3
 
